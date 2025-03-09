@@ -1,0 +1,43 @@
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Node
+/backend/node_modules
+/google-keep-frontend/node_modules
+/google-keep-frontend/npm-debug.log
+yarn-error.log
+
+# IDEs and editors
+.idea/
+/google-keep-frontend/.project
+/google-keep-frontend/.classpath
+/google-keep-frontend/.c9/
+*.launch
+/google-keep-frontend/.settings/
+/google-keep-frontend/*.sublime-workspace
+
+# Visual Studio Code
+/google-keep-frontend/.vscode/*
+!/google-keep-frontend/.vscode/settings.json
+!/google-keep-frontend/.vscode/tasks.json
+!/google-keep-frontend/.vscode/launch.json
+!/google-keep-frontend/.vscode/extensions.json
+/google-keep-frontend/.history/*
+
+# Miscellaneous
+/google-keep-frontend/.angular/cache
+/google-keep-frontend/.sass-cache/
+/google-keep-frontend/connect.lock
+/google-keep-frontend/coverage
+/libpeerconnection.log
+/google-keep-frontend/testem.log
+/google-keep-frontend/typings
+
+# System files
+/google-keep-frontend/.DS_Store
+/google-keep-frontend/Thumbs.db
