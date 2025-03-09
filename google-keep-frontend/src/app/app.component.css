@@ -1,0 +1,12 @@
+/* app.component.css */
+.note {
+    border: 1px solid #ccc;
+    padding: 10px;
+    min-height: 200px;
+    margin-top: 10px;
+}
+
+.toolbar button {
+    margin-right: 5px;
+    font-size: 16px;
+}

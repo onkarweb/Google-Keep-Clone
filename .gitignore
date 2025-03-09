@@ -9,35 +9,35 @@
 # Node
 /backend/node_modules
 /google-keep-frontend/node_modules
-npm-debug.log
+/google-keep-frontend/npm-debug.log
 yarn-error.log
 
 # IDEs and editors
 .idea/
-.project
-.classpath
-.c9/
+/google-keep-frontend/.project
+/google-keep-frontend/.classpath
+/google-keep-frontend/.c9/
 *.launch
-.settings/
-*.sublime-workspace
+/google-keep-frontend/.settings/
+/google-keep-frontend/*.sublime-workspace
 
 # Visual Studio Code
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-.history/*
+/google-keep-frontend/.vscode/*
+!/google-keep-frontend/.vscode/settings.json
+!/google-keep-frontend/.vscode/tasks.json
+!/google-keep-frontend/.vscode/launch.json
+!/google-keep-frontend/.vscode/extensions.json
+/google-keep-frontend/.history/*
 
 # Miscellaneous
-/.angular/cache
-.sass-cache/
-/connect.lock
-/coverage
+/google-keep-frontend/.angular/cache
+/google-keep-frontend/.sass-cache/
+/google-keep-frontend/connect.lock
+/google-keep-frontend/coverage
 /libpeerconnection.log
-testem.log
-/typings
+/google-keep-frontend/testem.log
+/google-keep-frontend/typings
 
 # System files
-.DS_Store
-Thumbs.db
+/google-keep-frontend/.DS_Store
+/google-keep-frontend/Thumbs.db
