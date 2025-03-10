@@ -15,16 +15,24 @@ io.on('connection', (socket) => {
   // Send the current note content to the newly connected client
   socket.emit('noteUpdate', noteContent);
 
-  // Listen for note updates from this client
-  socket.on('updateNote', (content) => {
-    noteContent = content;
-    // Broadcast the updated note to all other connected clients
-    socket.broadcast.emit('noteUpdate', noteContent);
-  });
+    // Listen for note updates from this client
+    socket.on('updateNote', (content) => {
+        noteContent = content;
+        // Broadcast the updated note to all other connected clients
+        socket.broadcast.emit('noteUpdate', noteContent);
+    });
 
-  socket.on('disconnect', () => {
-    console.log(`User disconnected: ${socket.id}`);
-  });
+    // Listen for cursor updates from this client
+    socket.on('cursorUpdate', (data) => {
+        // data contains { x, y, icon }
+        // Broadcast to all other clients along with the sender's id
+        socket.broadcast.emit('cursorUpdate', { userId: socket.id, ...data });
+        console.log("CursorUpdate Received & Emitted")
+    });
+
+    socket.on('disconnect', () => {
+        console.log(`User disconnected: ${socket.id}`);
+    });
 });
 
 http.listen(port, () => {
