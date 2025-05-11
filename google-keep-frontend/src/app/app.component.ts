@@ -15,7 +15,7 @@ export class AppComponent implements AfterViewInit {
 
   @ViewChild('noteArea') noteArea!: ElementRef;
   socket!: Socket;
-  connectionStatus: string = 'Connecting...';
+  connectionStatus: string = 'Disconnected';
 
   // local user information
   userIcon!: string;
@@ -37,7 +37,16 @@ export class AppComponent implements AfterViewInit {
     // ];
   }
   ngAfterViewInit() {
-    // Connect to the Socket.IO server
+   
+  }
+
+  connect(){
+    if (this.username != null && this.username != "") {
+
+      this.userIcon = this.getUserIconUrl(this.username);
+      console.log("UserIcon has been set: " + this.userIcon);
+
+       // Connect to the Socket.IO server
     this.socket = io('http://localhost:3000');
 
     // Listen for successful connection
@@ -82,13 +91,6 @@ export class AppComponent implements AfterViewInit {
           };
         }
       });
-  }
-
-  connect(){
-    if (this.username != null && this.username != "") {
-
-      this.userIcon = this.getUserIconUrl(this.username);
-      console.log("UserIcon has been set: " + this.userIcon);
     }
   }
 

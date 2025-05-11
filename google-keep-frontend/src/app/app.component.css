@@ -44,6 +44,12 @@
     animation: blink 1s infinite;
 }
 
+/* To mimic the placeholder on the div*/
+#noteDiv:empty:before {
+    content: attr(data-placeholder);
+    color: gray
+}
+
 /* CSS animation for blinking effect */
 @keyframes blink {
 
