@@ -9,6 +9,10 @@ const port = 3000;
 
 let noteContent = ''; // in-memory note storage
 
+app.get('/', (req, res) => {
+  res.send('Welcome to Backend!');
+});
+
 io.on('connection', (socket) => {
   console.log(`User connected: ${socket.id}`);
 
@@ -34,6 +38,8 @@ io.on('connection', (socket) => {
         console.log(`User disconnected: ${socket.id}`);
     });
 });
+
+
 
 http.listen(port, () => {
   console.log(`Server listening on http://localhost:${port}`);
