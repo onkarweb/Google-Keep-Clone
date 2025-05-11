@@ -1,43 +1,46 @@
-<ng-container *ngIf="connectionStatus != 'Connected'">
-  <input type=" text" [(ngModel)]="username" placeholder="Enter your Full to Start" class="username-input">
-  <button (click)="connect()">Connect</button>
-</ng-container>
+<!-- app.component.html -->
+<div class="app-container">
 
-
-<div class="status" *ngIf="connectionStatus == 'Connected'">
-  Connected as {{ username }}
-</div>
-<div class="status" *ngIf="connectionStatus !== 'Connected'">
-  {{ connectionStatus }}
-</div>
-
-<br>
-
-<ng-container *ngIf="connectionStatus === 'Connected' && this.userIcon != null">
-
-  <div class="toolbar">
-    <button (click)="format('bold')"><b>B</b></button>
-    <button (click)="format('italic')"><i>I</i></button>
-    <button (click)="format('underline')"><u>U</u></button>
-  </div>
-
-  <!-- Note container holds both the contenteditable note area and an overlay for remote cursors -->
-  <div class="note-container">
-    <div #noteArea id="noteDiv" contenteditable="true" class="note" data-placeholder="Start typing your note..."
-      (input)="onInput()" (keyup)="updateCursor()" (click)="updateCursor()">
+  <!-- CONNECT CARD -->
+  <ng-container *ngIf="connectionStatus !== 'Connected'">
+    <div class="connect-card">
+      <h2>Join Session</h2>
+      <input type="text" [(ngModel)]="username" placeholder="Enter your name" class="username-input" />
+      <button class="connect-btn" (click)="connect()">Connect</button>
+      <p class="error-msg" *ngIf="connectionStatus !== 'Connecting...'">
+        {{ connectionStatus }}
+      </p>
     </div>
-    <!-- Overlay for remote cursors -->
-    <div class="remote-cursors">
-      <ng-container *ngFor="let cursor of remoteCursorEntries">
-        <div class="remote-cursor" [ngStyle]="{'left.px': cursor[1].x, 'top.px': cursor[1].y - 35}">
-          <img [src]="cursor[1].icon" class="cursor-icon">
-          <!-- Blinking caret element -->
-          <div class="blinking-caret"></div>
-        </div>
+  </ng-container>
 
-
-      </ng-container>
+  <!-- STATUS BAR -->
+  <ng-container *ngIf="connectionStatus === 'Connected'">
+    <div class="status-bar">
+      <span>🟢 Connected as <strong>{{ username }}</strong></span>
+      <img [src]="userIcon" alt="Your icon" class="status-icon" />
     </div>
-  </div>
 
-</ng-container>
+    <!-- TOOLBAR -->
+    <div class="toolbar">
+      <button (click)="format('bold')" title="Bold"><b>B</b></button>
+      <button (click)="format('italic')" title="Italic"><i>I</i></button>
+      <button (click)="format('underline')" title="Underline"><u>U</u></button>
+    </div>
+
+    <!-- NOTE AREA + CURSORS -->
+    <div class="note-container">
+      <div #noteArea id="noteDiv" contenteditable="true" class="note" data-placeholder="Start typing your note..."
+        (input)="onInput()" (keyup)="updateCursor()" (click)="updateCursor()"></div>
+
+      <div class="remote-cursors">
+        <ng-container *ngFor="let entry of remoteCursorEntries">
+          <div class="remote-cursor" [ngStyle]="{ 'left.px': entry[1].x, 'top.px': entry[1].y - 20 }">
+            <img [src]="entry[1].icon" class="cursor-icon" />
+            <div class="blinking-caret"></div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </ng-container>
+
+</div>
